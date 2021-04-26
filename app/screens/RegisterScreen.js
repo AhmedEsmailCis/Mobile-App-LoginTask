@@ -5,7 +5,6 @@ import {
   StatusBar,
   Text,
   TouchableOpacity,
-  BackHandler,
   ScrollView,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Entypo';
@@ -16,7 +15,7 @@ import EmailIcon from 'react-native-vector-icons/AntDesign';
 import PasswordIcon from 'react-native-vector-icons/EvilIcons';
 import MobileIcon from 'react-native-vector-icons/FontAwesome';
 
-function LoginScreen(props) {
+function RegisterScreen(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
@@ -95,7 +94,7 @@ function LoginScreen(props) {
     </View>
   );
 }
-export default LoginScreen;
+export default RegisterScreen;
 
 //styles
 const styles = StyleSheet.create({
