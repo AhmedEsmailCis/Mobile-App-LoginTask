@@ -6,7 +6,7 @@ function Button(props) {
       <TouchableOpacity
         style={styles.TouchableOpacityStyle}
         onPress={props.onPress}>
-        <Text style={styles.text}>Sign In</Text>
+        <Text style={styles.text}>{props.name}</Text>
       </TouchableOpacity>
     </View>
   );

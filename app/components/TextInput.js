@@ -10,6 +10,7 @@ const Input = (props) => {
         placeholder={props.textPlaceHolder}
         secureTextEntry={props.checkSecure}
         onChangeText={props.onChangeText}
+        keyboardType={props.keyboardType}
       />
     </View>
   );
@@ -20,7 +21,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    margin: 15,
+    marginTop: 5,
+    marginBottom: 15,
+    marginLeft: 15,
+    marginRight: 15,
     padding: 0,
     paddingHorizontal: 5,
     borderRadius: 10,

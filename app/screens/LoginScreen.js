@@ -36,9 +36,12 @@ function LoginScreen(props) {
        <Text style={styles.details}>Enter your detail below</Text>
        <Text style={styles.userOrEmail}>Email</Text>
        <TextInput
+         keyboardType="email-address"
          icon={<EmailIcon name={'mail'} size={20} />}
          textPlaceHolder="Enter your E-mail"
-         onChangeText={(text) => {setEmail(text)}}
+         onChangeText={(text) => {
+           setEmail(text);
+         }}
        />
        <View style={styles.rowBetweenPassAndForgetPass}>
          <Text style={styles.password}>Password</Text>
@@ -48,9 +51,11 @@ function LoginScreen(props) {
          icon={<PasswordIcon name={'question'} size={25} />}
          textPlaceHolder="Enter your password"
          checkSecure={true}
-         onChangeText={(text) => {setPassword(text)}}
+         onChangeText={(text) => {
+           setPassword(text);
+         }}
        />
-       <Button onPress={onSignInButtonPressed} />
+       <Button onPress={onSignInButtonPressed} name="Login" />
        <View style={styles.rowBetweenIsaMemberAndSignUpNow}>
          <Text>Not a member? </Text>
          <TouchableOpacity
