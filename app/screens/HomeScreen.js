@@ -8,7 +8,7 @@ import {
   BackHandler,
   ScrollView,
 } from 'react-native';
-
+import {connect} from 'react-redux';
 function HomeScreen() {
   return (
     <View style={styles.view}>
@@ -17,8 +17,12 @@ function HomeScreen() {
     </View>
   );
 }
-export default HomeScreen;
-
+const mapStateToProps = (state) => {
+  return {
+    user: state.authRdx.user,
+  };
+};
+export default connect(mapStateToProps,null)(HomeScreen);
 //styles
 const styles = StyleSheet.create({
   view: {

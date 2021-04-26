@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   StyleSheet,
@@ -14,19 +14,21 @@ import TextInput from './../components/TextInput';
 import EmailIcon from 'react-native-vector-icons/AntDesign';
 import PasswordIcon from 'react-native-vector-icons/EvilIcons';
 import MobileIcon from 'react-native-vector-icons/FontAwesome';
-
+import {connect} from 'react-redux';
+import {registerUser} from '../redux/actions';
 function RegisterScreen(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [mobile, setMobile] = useState('');
   const onSignUpButtonPressed = () => {
-    console.log(email);
-    console.log(password);
-    console.log(name);
-    console.log(mobile);
-    props.navigation.navigate('Home');
+    props.registerUser({name,email,password,mobile});
   };
+  useEffect(() => {
+   if (props.status) {
+      props.navigation.navigate('Login');
+    }
+  });
   return (
     <View style={styles.view}>
       <StatusBar barStyle="dark-content" backgroundColor="white" />
@@ -80,7 +82,7 @@ function RegisterScreen(props) {
             setMobile(text);
           }}
         />
-        <Button onPress={onSignUpButtonPressed} name="Register" />
+        <Button onPress={onSignUpButtonPressed} name="Register" loading={props.loading}/>
         <View style={styles.rowBetweenIsaMemberAndLogin}>
           <Text>Have a Account ? </Text>
           <TouchableOpacity
@@ -94,7 +96,14 @@ function RegisterScreen(props) {
     </View>
   );
 }
-export default RegisterScreen;
+
+const mapStateToProps = (state) => {
+  return {
+    loading: state.authRdx.loading,
+    status: state.authRdx.status,
+  };
+};
+export default connect(mapStateToProps, {registerUser})(RegisterScreen);
 
 //styles
 const styles = StyleSheet.create({
